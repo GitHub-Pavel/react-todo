@@ -8,9 +8,13 @@ export default class Todo extends Component {
   constructor(props) {
     super(props)
 
+
+    if (localStorage.list === undefined) localStorage.setItem('list', JSON.stringify([]))
+    if (localStorage.listDone === undefined) localStorage.setItem('listDone', JSON.stringify([]))
+
     this.state = {
-      list: [],
-      listDone: []
+      list: JSON.parse(localStorage.getItem("list")),
+      listDone: JSON.parse(localStorage.getItem("listDone"))
     }
 
     this.listPush = this.listPush.bind(this)
@@ -33,6 +37,8 @@ export default class Todo extends Component {
     this.setState(state => ({
       list: listState
     }))
+
+    localStorage.setItem('list', JSON.stringify(this.state.list))
   }
 
   disEdit() {
@@ -45,12 +51,16 @@ export default class Todo extends Component {
     this.setState(state => ({
       list: confList
     }))
+
+    localStorage.setItem('list', JSON.stringify(this.state.list))
   }
 
   listPush(item) {
     this.setState(state => ({
       list: [...this.state.list, item]
     }))
+
+    localStorage.setItem('list', JSON.stringify(this.state.list))
   }
 
   editList(e, bool) {
@@ -67,6 +77,9 @@ export default class Todo extends Component {
       listDone: itemsArray,
       list: listInn
     }))
+
+    localStorage.setItem('list', JSON.stringify(this.state.list))
+    localStorage.setItem('listDone', JSON.stringify(this.state.listDone))
   }
 
   editCondition(e, cond) {
@@ -89,9 +102,15 @@ export default class Todo extends Component {
       listDone: itemsArraySecond
     }))
     
+
+    localStorage.setItem('list', JSON.stringify(this.state.list))
+    localStorage.setItem('listDone', JSON.stringify(this.state.listDone))
   }
 
   render() {
+    localStorage.setItem('list', JSON.stringify(this.state.list))
+    localStorage.setItem('listDone', JSON.stringify(this.state.listDone))
+
     return (
       <section className='section'>
         <div className='container'>

@@ -81,6 +81,9 @@ export default class Form extends Component {
       })
     }
 
+    localStorage.setItem('list', JSON.stringify(this.props.list))
+    localStorage.setItem('listDone', JSON.stringify(this.props.listDone))
+
     this.resetInput(e)
   }
 
