@@ -111,8 +111,6 @@ export default class Todo extends Component {
     localStorage.setItem('list', JSON.stringify(this.state.list))
     localStorage.setItem('listDone', JSON.stringify(this.state.listDone))
 
-    console.log(localStorage.list, localStorage.listDone)
-
     return (
       <section className='section'>
         <div className='container'>
