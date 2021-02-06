@@ -37,16 +37,17 @@ export default class Form extends Component {
   back(e) {
     e.preventDefault()
 
+    this.setState(state => ({
+      value: '',
+      historyText: ''
+    }))
+
     this.props.list.map((index, key) => {
       if(index.edit) {
         this.props.list[key].text = this.state.historyText
       } 
     })
-
-    this.setState(state => ({
-      value: '',
-      historyText: ''
-    }))
+  
     this.props.disEdit()
   }
 
@@ -63,7 +64,8 @@ export default class Form extends Component {
     
     if (inputBool) {
       this.setState(state => ({
-        value: ''
+        value: '',
+        historyText: ''
       }))
       this.props.disEdit()
 
@@ -112,6 +114,7 @@ export default class Form extends Component {
         }
       } 
     }
+
 
     return (
       <form 
